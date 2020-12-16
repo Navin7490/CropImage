@@ -29,6 +29,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
         if(requestCode == CropImage.PICK_IMAGE_CHOOSER_REQUEST_CODE
             && resultCode == Activity.RESULT_OK) {
             var imageuri:Uri = CropImage.getPickImageResultUri(this,data)
