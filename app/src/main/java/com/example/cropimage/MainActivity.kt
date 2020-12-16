@@ -6,6 +6,7 @@ import android.content.Intent
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.provider.MediaStore
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.Toast
@@ -15,15 +16,25 @@ import com.theartofdev.edmodo.cropper.CropImageView
 class MainActivity : AppCompatActivity() {
     lateinit var imageview:ImageView
     lateinit var btnbrowse:Button
+    lateinit var btncamera:Button
     lateinit var uri:Uri
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         imageview=findViewById(R.id.image_view)
         btnbrowse=findViewById(R.id.Btn_getimage)
+        btncamera=findViewById(R.id.Btn_getcamera)
+
+        btncamera.setOnClickListener {
+            var intencamera=Intent(MediaStore.ACTION_IMAGE_CAPTURE)
+            startActivityForResult(intencamera,CropImage.PICK_IMAGE_CHOOSER_REQUEST_CODE)
+        }
 
         btnbrowse.setOnClickListener {
-            CropImage.startPickImageActivity(this)
+            //CropImage.startPickImageActivity(this)
+            var intent=Intent(Intent.ACTION_GET_CONTENT)
+            intent.setType("image/*")
+            startActivityForResult(intent,CropImage.PICK_IMAGE_CHOOSER_REQUEST_CODE)
 
         }
     }

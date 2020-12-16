@@ -18,5 +18,11 @@
         android:text="getimage"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
+    <Button
+        android:id="@+id/Btn_getcamera"
+        android:layout_below="@+id/Btn_getimage"
+        android:text="Camera"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
 
 </RelativeLayout>
